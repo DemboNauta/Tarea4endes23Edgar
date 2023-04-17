@@ -3,10 +3,38 @@
  * and open the template in the editor.
  */
 
-package tarea4endes23;
+package entidadFinanciera;
 
 
 public class CCuenta {
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @return the cuenta
+     */
+    public String getCuenta() {
+        return cuenta;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public double getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @return the tipoInterés
+     */
+    public double getTipoInterés() {
+        return tipoInterés;
+    }
 
     /**
      * @author Edgar
@@ -16,6 +44,20 @@ public class CCuenta {
     private String cuenta;
     private double saldo;
     private double tipoInterés;
+    
+    private final String ERRORCANTIDADNEGATIVA = "No se puede ingresar una cantidad negativa";
+
+    /**
+     * Get the value of ERRORCANTIDADNEGATIVA
+     *
+     * @return the value of ERRORCANTIDADNEGATIVA
+     */
+    public String getERRORCANTIDADNEGATIVA() {
+        return ERRORCANTIDADNEGATIVA;
+    }
+
+
+
 
     public CCuenta()
     {
@@ -38,7 +80,7 @@ public class CCuenta {
      * @return el saldo de la cuenta
      */
     public double estado(){
-        return this.saldo;
+        return this.getSaldo();
     }
     /**
      * Este método permite ingresar dinero en una cuenta de banco
@@ -49,7 +91,7 @@ public class CCuenta {
     {
         if (cantidad<0)
             throw new Exception("No se puede ingresar una cantidad negativa");
-        saldo = saldo + cantidad;
+        saldo = getSaldo() + cantidad;
     }
     /**
      * Este método permite retirar dinero en una cuenta de banco
@@ -61,8 +103,9 @@ public class CCuenta {
     {
         if (cantidad <= 0)
             throw new Exception ("No se puede retirar una cantidad negativa");
-        if (saldo < cantidad)
+        if (getSaldo() < cantidad)
             throw new Exception ("No se hay suficiente saldo");
-        saldo = saldo - cantidad;
+        saldo = getSaldo() - cantidad;
     }
 }
+
